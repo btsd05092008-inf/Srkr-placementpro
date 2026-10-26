@@ -4,211 +4,378 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SRKR PlacementPro</title>
+
   <style>
-    * { box-sizing: border-box; }
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: Arial, sans-serif;
-      background: #f3f7ff;
-      color: #172554;
+      background: #f1f5f9;
+      color: #172033;
+      line-height: 1.6;
     }
+
     header {
-      background: #123b80;
+      background: linear-gradient(135deg, #102a56, #1769aa);
       color: white;
-      padding: 22px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      padding: 28px 16px;
+      text-align: center;
     }
+
+    header h1 {
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    header p {
+      font-size: 15px;
+      opacity: 0.95;
+    }
+
+    nav {
+      background: #0b1f3a;
+      padding: 12px;
+      text-align: center;
+    }
+
     nav a {
       color: white;
       text-decoration: none;
-      margin: 8px;
-    }
-    .hero {
-      padding: 65px 7%;
-      background: linear-gradient(120deg, #123b80, #2879dc);
-      color: white;
-      text-align: center;
-    }
-    .hero h2 { font-size: 36px; }
-    .hero p { font-size: 18px; line-height: 1.6; }
-    button {
-      background: #ffcf5c;
-      border: 0;
-      padding: 13px 20px;
-      border-radius: 8px;
+      margin: 0 12px;
       font-weight: bold;
-      cursor: pointer;
-      margin: 6px;
+      font-size: 14px;
     }
-    section { padding: 35px 7%; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
+
+    nav a:hover {
+      color: #93c5fd;
     }
+
+    .container {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .intro h2 {
+      color: #123d72;
+      margin-bottom: 8px;
+    }
+
     .card {
       background: white;
-      padding: 23px;
+      padding: 24px;
+      margin-bottom: 25px;
       border-radius: 14px;
-      box-shadow: 0 3px 12px #dce5f5;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
     }
-    input, textarea, select {
+
+    .card h2 {
+      color: #123d72;
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
       display: block;
       width: 100%;
       padding: 12px;
-      margin: 10px 0;
       border: 1px solid #cbd5e1;
-      border-radius: 7px;
+      border-radius: 8px;
+      font-size: 16px;
+      background: white;
+      color: #172033;
     }
-    .primary { background: #1756ad; color: white; }
-    footer {
-      background: #123b80;
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #60a5fa;
+      border-color: #2563eb;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .hint {
+      display: block;
+      color: #64748b;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #1769aa;
       color: white;
-      text-align: center;
-      padding: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
     }
-    html { scroll-behavior: smooth; }
+
+    button:hover {
+      background: #104f85;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    #profilePreview {
+      display: none;
+    }
+
+    .profile-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
+      overflow-wrap: anywhere;
+    }
+
+    .profile-item:last-child {
+      border-bottom: none;
+    }
+
+    .profile-item strong {
+      display: block;
+      color: #123d72;
+      margin-bottom: 3px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px 12px;
+      background: #0b1f3a;
+      color: white;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+
+      .card {
+        padding: 18px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>🎓 SRKR PlacementPro</h1>
+  <header>
+    <h1>SRKR PlacementPro</h1>
+    <p>Student Profiles • Skills • Projects • Placement Preparation</p>
+  </header>
+
   <nav>
     <a href="#home">Home</a>
-    <a href="#features">Features</a>
-    <a href="#companies">Companies</a>
-    <a href="#profile">Profile</a>
+    <a href="#studentForm">Student Profile</a>
+    <a href="#profilePreview">Profile Preview</a>
   </nav>
-</header>
 
-<div class="hero" id="home">
-  <h2>Your Gateway to Campus Placements</h2>
-  <p>Prepare smarter. Build your resume. Get ready for your dream career.</p>
-  <button onclick="document.getElementById('profile').scrollIntoView()">
-    Create Student Profile
-  </button>
-  <button onclick="document.getElementById('features').scrollIntoView()">
-    Explore Features
-  </button>
-</div>
+  <main class="container">
 
-<section id="features">
-  <h2>Everything You Need for Placements</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>📄 Resume Builder</h3>
-      <p>Enter your details and prepare for your professional resume.</p>
-      <button onclick="document.getElementById('profile').scrollIntoView()">Get Started</button>
-    </div>
-    <div class="card">
-      <h3>🎯 Interview Preparation</h3>
-      <p>Practice aptitude, technical concepts, and interview questions.</p>
-    </div>
-    <div class="card">
-      <h3>🏢 Company Explorer</h3>
-      <p>Explore company information and skills required for different roles.</p>
-    </div>
-  </div>
-</section>
+    <section class="intro" id="home">
+      <h2>Welcome to SRKR PlacementPro</h2>
+      <p>
+        Create your student profile and showcase your skills
+        to prepare for placement opportunities.
+      </p>
+    </section>
 
-<section id="companies">
-  <h2>Explore Career Opportunities</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Software Developer</h3>
-      <p>Useful skills: programming, problem-solving, and data structures.</p>
-    </div>
-    <div class="card">
-      <h3>Data Analyst</h3>
-      <p>Useful skills: SQL, spreadsheets, statistics, and data visualization.</p>
-    </div>
-    <div class="card">
-      <h3>Web Developer</h3>
-      <p>Useful skills: HTML, CSS, JavaScript, and responsive design.</p>
-    </div>
-  </div>
-  <p><small>These are example career paths, not verified SRKR placement records.</small></p>
-</section>
+    <section class="card" id="studentForm">
+      <h2>Create Your Student Profile</h2>
 
-<section id="profile">
-  <h2>Student Profile</h2>
-  <div class="card">
-    <form id="profileForm">
-      <label>Full Name</label>
-      <input id="studentName" placeholder="Enter your name" required>
+      <form id="placementForm">
 
-      <label>Engineering Branch</label>
-      <select id="branch" required>
-        <option value="">Choose your branch</option>
-        <option>Computer Science Engineering</option>
-        <option>Information Technology</option>
-        <option>Electronics and Communication Engineering</option>
-        <option>Electrical and Electronics Engineering</option>
-        <option>Mechanical Engineering</option>
-        <option>Civil Engineering</option>
-        <option>Other</option>
-      </select>
+        <div class="form-group">
+          <label for="fullName">Full Name *</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="Enter your full name"
+            required
+          >
+        </div>
 
-      <label>Graduation Year</label>
-      <input id="year" type="number" placeholder="e.g. 2028" required>
+        <div class="form-group">
+          <label for="branch">Engineering Branch *</label>
+          <select id="branch" name="branch" required>
+            <option value="">Select your branch</option>
+            <option value="CSE">CSE</option>
+            <option value="AIML">AIML</option>
+            <option value="AIDS">AIDS</option>
+            <option value="IT">IT</option>
+            <option value="CSIT">CSIT</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+          </select>
+        </div>
 
-      <label>CGPA</label>
-      <input id="cgpa" type="number" min="0" max="10" step="0.01" placeholder="e.g. 8.2">
+        <div class="form-group">
+          <label for="graduationYear">Graduation Year *</label>
+          <select id="graduationYear" name="graduationYear" required>
+            <option value="">Select graduation year</option>
+            <option value="2026">2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+            <option value="2029">2029</option>
+            <option value="2030">2030</option>
+          </select>
+        </div>
 
-      <label>Technical Skills</label>
-      <textarea id="skills" placeholder="e.g. Python, Java, HTML"></textarea>
+        <div class="form-group">
+          <label for="cgpa">CGPA *</label>
+          <input
+            type="number"
+            id="cgpa"
+            name="cgpa"
+            placeholder="Enter your CGPA"
+            min="0"
+            max="10"
+            step="0.01"
+            required
+          >
+          <small class="hint">Enter a value between 0 and 10.</small>
+        </div>
 
-      <label>Projects</label>
-      <textarea id="projects" placeholder="Describe your projects"></textarea>
+        <div class="form-group">
+          <label for="skills">Technical Skills *</label>
+          <textarea
+            id="skills"
+            name="skills"
+            placeholder="Example: Java, Python, HTML, CSS, SQL"
+            required
+          ></textarea>
+        </div>
 
-      <button class="primary" type="submit">Preview Profile</button>
-    </form>
-    <div id="profilePreview" aria-live="polite"></div>
-  </div>
-</section>
+        <div class="form-group">
+          <label for="projects">Projects (Optional)</label>
+          <textarea
+            id="projects"
+            name="projects"
+            placeholder="Describe your projects if you have any"
+          ></textarea>
+          <small class="hint">
+            No projects yet? Leave this section blank.
+          </small>
+        </div>
 
-<footer>
-  <p>SRKR PlacementPro | Student Placement Support</p>
-  <p>Demo website — company and career information must be verified.</p>
-</footer>
+        <button type="submit">Create My Profile</button>
 
-<script>
-  document.getElementById('profileForm').addEventListener('submit', function(event) {
-    event.preventDefault();
+        <p id="message" role="status" aria-live="polite"></p>
 
-    const name = document.getElementById('studentName').value;
-    const branch = document.getElementById('branch').value;
-    const year = document.getElementById('year').value;
-    const cgpa = document.getElementById('cgpa').value;
-    const skills = document.getElementById('skills').value;
-    const projects = document.getElementById('projects').value;
+      </form>
+    </section>
 
-    const preview = document.getElementById('profilePreview');
-    preview.replaceChildren();
+    <section class="card" id="profilePreview">
+      <h2>Your Profile Preview</h2>
+      <div id="profileDetails"></div>
+      <br>
+      <button type="button" id="editProfile">Edit My Profile</button>
+    </section>
 
-    const title = document.createElement('h3');
-    title.textContent = 'Profile Preview';
-    preview.appendChild(title);
+  </main>
 
-    [
-      ['Name', name],
-      ['Branch', branch],
-      ['Graduation Year', year],
-      ['CGPA', cgpa || 'Not provided'],
-      ['Skills', skills || 'Not provided'],
-      ['Projects', projects || 'Not provided']
-    ].forEach(function(item) {
-      const p = document.createElement('p');
-      p.textContent = item[0] + ': ' + item[1];
-      preview.appendChild(p);
-    });
-  });
-</script>
+  <footer>
+    <p>SRKR PlacementPro | Student Placement Support</p>
+    <p>Created to support students in their placement journey.</p>
+  </footer>
 
-</body>
-</html>
+  <script>
+    const form = document.getElementById("placementForm");
+    const message = document.getElementById("message");
+    const preview = document.getElementById("profilePreview");
+    const profileDetails = document.getElementById("profileDetails");
+    const editButton = document.getElementById("editProfile");
+
+    const branchNames = {
+      "CSE": "CSE",
+      "AIML": "AIML",
+      "AIDS": "AIDS",
+      "IT": "IT",
+      "CSIT": "CSIT",
+      "ECE": "ECE",
+      "EEE": "EEE",
+      "MECH": "MECH",
+      "CIVIL": "CIVIL"
+    };
+
+    function addProfileItem(label, value) {
+      const item = document.createElement("div");
+      item.className = "profile-item";
+
+      const heading = document.createElement("strong");
+      heading.textContent = label;
+
+      const content = document.createElement("span");
+      content.textContent = value || "Not provided";
+
+      item.appendChild(heading);
+      item.appendChild(content);
+      profileDetails.appendChild(item);
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const cgpa = Number(document.getElementById("cgpa").value);
+
+      if (!Number.isFinite(cgpa) || cgpa < 0 || cgpa > 10) {
+        message.textContent = "Please enter a valid CGPA between 0 and 10.";
+        message.style.color = "#b91c1c";
+        return;
+      }
+
+      const name = document.getElementById("fullName").value.trim();
+      const branch = document.getElementById("branch").value;
+      const year = document.getElement
