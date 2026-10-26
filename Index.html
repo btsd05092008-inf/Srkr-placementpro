@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRKR PlacementPro</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3f7ff;
+      color: #172554;
+    }
+    header {
+      background: #123b80;
+      color: white;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 8px;
+    }
+    .hero {
+      padding: 65px 7%;
+      background: linear-gradient(120deg, #123b80, #2879dc);
+      color: white;
+      text-align: center;
+    }
+    .hero h2 { font-size: 36px; }
+    .hero p { font-size: 18px; line-height: 1.6; }
+    button {
+      background: #ffcf5c;
+      border: 0;
+      padding: 13px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 6px;
+    }
+    section { padding: 35px 7%; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: white;
+      padding: 23px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px #dce5f5;
+    }
+    input, textarea, select {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+    }
+    .primary { background: #1756ad; color: white; }
+    footer {
+      background: #123b80;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    html { scroll-behavior: smooth; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎓 SRKR PlacementPro</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#companies">Companies</a>
+    <a href="#profile">Profile</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <h2>Your Gateway to Campus Placements</h2>
+  <p>Prepare smarter. Build your resume. Get ready for your dream career.</p>
+  <button onclick="document.getElementById('profile').scrollIntoView()">
+    Create Student Profile
+  </button>
+  <button onclick="document.getElementById('features').scrollIntoView()">
+    Explore Features
+  </button>
+</div>
+
+<section id="features">
+  <h2>Everything You Need for Placements</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>📄 Resume Builder</h3>
+      <p>Enter your details and prepare for your professional resume.</p>
+      <button onclick="document.getElementById('profile').scrollIntoView()">Get Started</button>
+    </div>
+    <div class="card">
+      <h3>🎯 Interview Preparation</h3>
+      <p>Practice aptitude, technical concepts, and interview questions.</p>
+    </div>
+    <div class="card">
+      <h3>🏢 Company Explorer</h3>
+      <p>Explore company information and skills required for different roles.</p>
+    </div>
+  </div>
+</section>
+
+<section id="companies">
+  <h2>Explore Career Opportunities</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Software Developer</h3>
+      <p>Useful skills: programming, problem-solving, and data structures.</p>
+    </div>
+    <div class="card">
+      <h3>Data Analyst</h3>
+      <p>Useful skills: SQL, spreadsheets, statistics, and data visualization.</p>
+    </div>
+    <div class="card">
+      <h3>Web Developer</h3>
+      <p>Useful skills: HTML, CSS, JavaScript, and responsive design.</p>
+    </div>
+  </div>
+  <p><small>These are example career paths, not verified SRKR placement records.</small></p>
+</section>
+
+<section id="profile">
+  <h2>Student Profile</h2>
+  <div class="card">
+    <form id="profileForm">
+      <label>Full Name</label>
+      <input id="studentName" placeholder="Enter your name" required>
+
+      <label>Engineering Branch</label>
+      <select id="branch" required>
+        <option value="">Choose your branch</option>
+        <option>Computer Science Engineering</option>
+        <option>Information Technology</option>
+        <option>Electronics and Communication Engineering</option>
+        <option>Electrical and Electronics Engineering</option>
+        <option>Mechanical Engineering</option>
+        <option>Civil Engineering</option>
+        <option>Other</option>
+      </select>
+
+      <label>Graduation Year</label>
+      <input id="year" type="number" placeholder="e.g. 2028" required>
+
+      <label>CGPA</label>
+      <input id="cgpa" type="number" min="0" max="10" step="0.01" placeholder="e.g. 8.2">
+
+      <label>Technical Skills</label>
+      <textarea id="skills" placeholder="e.g. Python, Java, HTML"></textarea>
+
+      <label>Projects</label>
+      <textarea id="projects" placeholder="Describe your projects"></textarea>
+
+      <button class="primary" type="submit">Preview Profile</button>
+    </form>
+    <div id="profilePreview" aria-live="polite"></div>
+  </div>
+</section>
+
+<footer>
+  <p>SRKR PlacementPro | Student Placement Support</p>
+  <p>Demo website — company and career information must be verified.</p>
+</footer>
+
+<script>
+  document.getElementById('profileForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('studentName').value;
+    const branch = document.getElementById('branch').value;
+    const year = document.getElementById('year').value;
+    const cgpa = document.getElementById('cgpa').value;
+    const skills = document.getElementById('skills').value;
+    const projects = document.getElementById('projects').value;
+
+    const preview = document.getElementById('profilePreview');
+    preview.replaceChildren();
+
+    const title = document.createElement('h3');
+    title.textContent = 'Profile Preview';
+    preview.appendChild(title);
+
+    [
+      ['Name', name],
+      ['Branch', branch],
+      ['Graduation Year', year],
+      ['CGPA', cgpa || 'Not provided'],
+      ['Skills', skills || 'Not provided'],
+      ['Projects', projects || 'Not provided']
+    ].forEach(function(item) {
+      const p = document.createElement('p');
+      p.textContent = item[0] + ': ' + item[1];
+      preview.appendChild(p);
+    });
+  });
+</script>
+
+</body>
+</html>
